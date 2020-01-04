@@ -117,7 +117,7 @@ export default {
           type: 'warning'
         }).then(() => {
             //调用后台接口完成删除操作
-            let url="http://localhost:6677/customer/deleteById"+id;
+            let url="http://localhost:6677/customer/deleteById?id="+id;
             request.get(url).then((response)=>{
                 //1.刷新数据
                 this.loadData();
