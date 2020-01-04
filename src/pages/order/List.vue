@@ -46,6 +46,7 @@
                 <el-button size="small" @click="closeModalHandler">取 消</el-button>
                 <el-button size="small" type="primary" @click="submitHandler">确 定</el-button>
             </span>
+            
         </el-dialog>
         <!-- /模态框结束-->
     </div>
