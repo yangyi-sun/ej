@@ -151,6 +151,7 @@ export default {
 
         toUpdateHandler(id){
             //！！调用 visible用this
+            this.form=row;
             this.visible=true;
             this.title="编辑员工信息";
 
