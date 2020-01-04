@@ -24,7 +24,7 @@
                     <a href="" @click.prevent="toDeleteHandler(slot.row.id)">删除</a>
                     <!-- !!!!!@click 点击绑定事件-->
                     <!-- @click.prevent点击时阻止默认行为 （在这默认行为时跳转） -->
-                    <a href="" @click.prevent="toUpdateHandler(slot.row.id)">修改</a>
+                    <a href="" @click.prevent="toUpdateHandler(slot.row)">修改</a>
                 </template>
             </el-table-column>
         </el-table>
@@ -149,7 +149,7 @@ export default {
 
         },
 
-        toUpdateHandler(id){
+        toUpdateHandler(row){
             //！！调用 visible用this
             this.form=row;
             this.visible=true;
@@ -163,7 +163,11 @@ export default {
         },
 
         toAddHandler(){
-            this.visible=true;
+            this.form = {
+                type:"waiter"
+            }
+            this.title = "添加栏目";
+            this.visible = true;
         }
     },
     created(){

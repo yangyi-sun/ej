@@ -24,7 +24,7 @@
                     <a href="" @click.prevent="toDeleteHandler(slot.row.id)">删除</a>
                     <!-- !!!!!@click 点击绑定事件-->
                     <!-- @click.prevent点击时阻止默认行为 （在这默认行为时跳转） -->
-                    <a href="" @click.prevent="toUpdateHandler(slot.row.id)">修改</a>
+                    <a href="" @click.prevent="toUpdateHandler(slot.row)">修改</a>
                 </template>
             </el-table-column>
         </el-table>
@@ -61,7 +61,9 @@
             <el-form-item label="电话">
              <el-input v-model="form.telephone" ></el-input>
          </el-form-item>
- 
+  <el-form-item label="ID">
+             <el-input v-model="form.customerId" ></el-input>
+         </el-form-item>
 
 
      </el-form>
@@ -138,8 +140,9 @@ export default {
 
         },
 
-        toUpdateHandler(id){
+        toUpdateHandler(row){
             //！！调用 visible用this
+            this.form = row;
             this.visible=true;
             this.title="编辑员工信息";
 
@@ -151,7 +154,11 @@ export default {
         },
 
         toAddHandler(){
-            this.visible=true;
+            this.form = {
+                type:"address"
+            }
+            this.title = "添加栏目";
+            this.visible = true;
         }
     },
     created(){
