@@ -34,12 +34,6 @@
                 <el-form-item label="评论内容">
                     <el-input v-model="form.content" type="textarea" :rows="2" placeholder="请输入内容"></el-input>
                 </el-form-item>
-                <el-form-item label="联系方式">
-                    <el-input v-model="form.commentTime"></el-input>
-                </el-form-item>
-                <el-form-item label="订单号">
-                    <el-input v-model="form.orderId"></el-input>
-                </el-form-item>
             </el-form>
             <span slot="footer" class="dialog-footer">
                 <el-button size="small" @click="closeModalHandler">取 消</el-button>
