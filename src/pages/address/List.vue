@@ -61,7 +61,9 @@
             <el-form-item label="电话">
              <el-input v-model="form.telephone" ></el-input>
          </el-form-item>
- 
+  <el-form-item label="ID">
+             <el-input v-model="form.customerId" ></el-input>
+         </el-form-item>
 
 
      </el-form>
