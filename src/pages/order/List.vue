@@ -46,7 +46,7 @@
                 <el-button size="small" @click="closeModalHandler">取 消</el-button>
                 <el-button size="small" type="primary" @click="submitHandler">确 定</el-button>
             </span>
-            
+
         </el-dialog>
         <!-- /模态框结束-->
     </div>
@@ -126,6 +126,8 @@ export default {
             this.visible = true;
         }
     },
+
+    
     //用于存放要向网页中显示的数据
     data(){
         return{
@@ -137,6 +139,9 @@ export default {
             }
         }
     },
+
+
+
     created(){
         //页面加载出来
         //this为当前vue实例
