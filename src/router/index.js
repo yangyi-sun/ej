@@ -104,6 +104,42 @@ export const constantRoutes = [
       }
     ]
   },
+  {
+    path: '/address',
+    component: Layout,
+    children: [
+      {
+        path: 'list',
+        name: 'AddressList',
+        component: () => import('@/pages/address/List'),//@代表src这个目录
+        meta: { title: '地址管理', icon: 'form' }
+      }
+    ]
+  },
+  {
+    path: '/order',
+    component: Layout,
+    children: [
+      {
+        path: 'list',
+        name: 'OrderList',
+        component: () => import('@/pages/order/List'),//@代表src这个目录
+        meta: { title: '订单管理', icon: 'form' }
+      }
+    ]
+  },
+  {
+    path: '/comment',
+    component: Layout,
+    children: [
+      {
+        path: 'list',
+        name: 'CommentList',
+        component: () => import('@/pages/comment/List'),//@代表src这个目录
+        meta: { title: '评论管理', icon: 'form' }
+      }
+    ]
+  },
 
   // 404 page must be placed at the end !!!
   { path: '*', redirect: '/404', hidden: true }
