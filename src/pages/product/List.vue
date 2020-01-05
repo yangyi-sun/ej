@@ -9,12 +9,18 @@
       <el-table-column prop="id" label="编号"></el-table-column>
       <el-table-column prop="name" label="产品名称"></el-table-column>
       <el-table-column prop="price" label="单价"></el-table-column>
-      <el-table-column prop="description" label="描述"></el-table-column>
+      <el-table-column width="200px" prop="description" label="描述"></el-table-column>
       <el-table-column prop="categoryId" label="所属分类"></el-table-column>
+       <el-table-column label="产品照片">
+         <template slot-scope="scope">
+          <img :src="scope.row.photo" width="200" height="200">
+        </template>
+       </el-table-column>
       <el-table-column label="操作">
         <template v-slot="slot">
-          <a href="" @click.prevent="toDeleteHandler(slot.row.id)">删除</a>
-          <a href="" @click.prevent="toUpdateHandler(slot.row)">修改</a>
+          <a href="" @click.prevent="toDeleteHandler(slot.row.id)"><i class="el-icon-delete"></i></a>
+          <a href="" @click.prevent="toUpdateHandler(slot.row)"><i class="el-icon-edit"></i></a>
+          <a href="" @click.prevent="toDetailHandler(slow.row.id)">详情</a>
         </template>
       </el-table-column>
     </el-table>
@@ -27,7 +33,6 @@
       title="录入产品信息"
       :visible.sync="visible"
       width="60%">
-
       -- {{form}}
       <el-form :model="form" label-width="80px">
         <el-form-item label="产品名称">
@@ -48,6 +53,17 @@
         <el-form-item label="描述">
           <el-input type="textarea" v-model="form.description"></el-input>
         </el-form-item>
+        <el-form-item label="产品照片">
+          <el-upload
+          class="upload-demo"
+          action="https://134.175.154.93:6677/file/upload"
+          :file-list="fileList"
+          :on-success="uploadSuccessHandler"
+          list-type="picture">
+          <el-button size="small" type="primary">点击上传</el-button>
+          <div slot="tip" class="el-upload__tip">只能上传jpg/png文件，且不超过500kb</div>
+          </el-upload>
+        </el-form-item>
       </el-form>
 
       <span slot="footer" class="dialog-footer">
@@ -56,7 +72,6 @@
       </span>
     </el-dialog>
     <!-- /模态框 -->
-
   </div>
 </template>
 
@@ -66,6 +81,10 @@ import querystring from 'querystring'
 export default {
   // 用于存放网页中需要调用的方法
   methods:{
+    uploadSuccessHandler(response){
+      let photo="http://134.175.154.93:8888/group1/"+response.id
+      this.form.photo=photo;
+    },
     loadCategory(){
       let url = "http://localhost:6677/category/findAll"
       request.get(url).then((response)=>{
@@ -131,7 +150,8 @@ export default {
     toUpdateHandler(row){
       // 模态框表单中显示出当前行的信息
       this.form = row;
-      this.visible = true;
+      this.visible= true;
+      filelist=null;
     },
     closeModalHandler(){
       this.visible = false;
@@ -140,6 +160,7 @@ export default {
       // 将form变为初始值
       this.form = {}
       this.visible = true;
+      filelist=null;
     }
   },
   // 用于存放要向网页中显示的数据
@@ -160,7 +181,6 @@ export default {
   }
 }
 </script>
-
 <style scoped>
- 
+
 </style> 
