@@ -20,7 +20,7 @@
         <template v-slot="slot">
           <a href="" @click.prevent="toDeleteHandler(slot.row.id)"><i class="el-icon-delete"></i></a>
           <a href="" @click.prevent="toUpdateHandler(slot.row)"><i class="el-icon-edit"></i></a>
-          <a href="" @click.prevent="toDetailHandler(slow.row.id)">详情</a>
+          <a href="" @click.prevent="">详情</a>
         </template>
       </el-table-column>
     </el-table>
